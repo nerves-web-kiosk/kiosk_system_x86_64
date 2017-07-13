@@ -20,8 +20,8 @@ defmodule KioskSystemx8664.Mixfile do
   end
 
   defp deps do
-    [{:nerves, "~> 0.5"},
-     {:nerves_system_br, "~> 0.12.1"},
+    [{:nerves, "~> 0.6"},
+     {:nerves_system_br, "~> 0.13.2"},
      {:nerves_toolchain_x86_64_unknown_linux_gnu, "~> 0.10.0"}]
   end
 
