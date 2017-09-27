@@ -15,7 +15,7 @@ defmodule KioskSystemx8664.Mixfile do
   def project do
     [app: :kiosk_system_x86_64,
      version: @version,
-     elixir: "~> 1.3",
+     elixir: "~> 1.4",
      compilers: Mix.compilers ++ [:nerves_package],
      description: description(),
      package: package(),
@@ -29,9 +29,11 @@ defmodule KioskSystemx8664.Mixfile do
   end
 
   defp deps do
-    [{:nerves, "~> 0.7"},
-     {:nerves_system_br, "== 0.13.3", override: true},
-     {:nerves_toolchain_x86_64_unknown_linux_gnu, "~> 0.10.0"}]
+    [
+      {:nerves, "~> 0.7", runtime: false},
+      {:nerves_system_br, "~> 0.13.7", runtime: false},
+      {:nerves_toolchain_x86_64_unknown_linux_gnu, "~> 0.11.0", runtime: false}
+    ]
   end
 
   defp description do
