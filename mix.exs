@@ -10,7 +10,7 @@ defmodule KioskSystemx8664.Mixfile do
 
   @version Path.join(__DIR__, "VERSION")
     |> File.read!
-    |> String.strip
+    |> String.trim
 
   def project do
     [app: :kiosk_system_x86_64,
@@ -31,8 +31,8 @@ defmodule KioskSystemx8664.Mixfile do
   defp deps do
     [
       {:nerves, "~> 0.7", runtime: false},
-      {:nerves_system_br, "~> 0.13.7", runtime: false},
-      {:nerves_toolchain_x86_64_unknown_linux_gnu, "~> 0.11.0", runtime: false}
+      {:nerves_system_br, "~> 0.14.1", runtime: false},
+      {:nerves_toolchain_x86_64_unknown_linux_gnu , "~> 0.11.0", runtime: false}
     ]
   end
 
