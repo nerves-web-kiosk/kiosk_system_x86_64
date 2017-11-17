@@ -28,5 +28,6 @@ config pkg, :nerves_env,
     "fwup.conf",
     "post-build.sh",
     "post-createfs.sh",
+    "grub.cfg",
     "VERSION"
   ]
