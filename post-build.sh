@@ -7,6 +7,10 @@ if [ -z $TARGET_DIR ]; then
     exit 1
 fi
 
+# UDev Mods
+# Remove rules to enforce predictable net names
+rm -f $TARGET_DIR/lib/udev/rules.d/75-net-description.rules
+
 # Remove the Buildroot-generated grub.cfg so avoid confusion.
 # We put our grub in the FAT filesystem at the beginning of the
 # disk so that it exists across firmware updates.
