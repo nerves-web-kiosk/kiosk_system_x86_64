@@ -44,9 +44,6 @@ defmodule KioskSystemx8664.Mixfile do
       platform_config: [
         defconfig: "nerves_defconfig"
       ],
-      provider_config: [
-        docker: {"Dockerfile", "kiosk_system_x86_64:0.2.0"}
-      ],
       checksum: package_files()
     ]
   end

@@ -153,7 +153,7 @@ jobs:
           command: grep -Pazo "(?s)(?<=## ${CIRCLE_TAG})[^#]+" /nerves/deploy/system/CHANGELOG.md > /nerves/deploy/system/RELEASE_NOTES
       - run:
           name: Deploy artifacts to Github
-          command: ./ghr -draft -t $GITHUB_TOKEN -u nerves-project -r $CIRCLE_PROJECT_REPONAME -b "$(cat /nerves/deploy/system/RELEASE_NOTES)" -replace $CIRCLE_TAG /nerves/deploy/system/artifacts
+          command: ./ghr -draft -t $GITHUB_TOKEN -u $CIRCLE_PROJECT_USERNAME -r $CIRCLE_PROJECT_REPONAME -b "$(cat /nerves/deploy/system/RELEASE_NOTES)" -replace $CIRCLE_TAG /nerves/deploy/system/artifacts
 
 workflows:
   version: 2
