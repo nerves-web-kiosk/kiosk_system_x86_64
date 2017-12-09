@@ -34,11 +34,9 @@ defmodule KioskSystemx8664.Mixfile do
 
   defp nerves_package do
     [
-      type: :system,
-      version: @version,
-      compiler: :nerves_package,
+      type:  :system,
       artifact_url: [
-        "https://github.com/letoteteam/#{@app}/releases/download/v#{@version}/#{@app}-v#{@version}.tar.gz",
+        "https://github.com/letoteteam/#{@app}/releases/download/v#{@version}/#{@app}-v#{@version}.tar.gz"
       ],
       platform: Nerves.System.BR,
       platform_config: [
@@ -51,8 +49,9 @@ defmodule KioskSystemx8664.Mixfile do
   defp deps do
     [
       {:nerves, "~> 0.8", runtime: false},
-      {:nerves_system_br, "~> 0.15.0", runtime: false, app: false},
-      {:nerves_toolchain_x86_64_unknown_linux_gnu , "~> 0.12.1", runtime: false, app: false}
+      #{:nerves_system_br, "~> 0.15.0", runtime: false, app: false},
+      {:nerves_system_br, github: "nerves-project/nerves_system_br", branch: "br_2017.11"},
+      {:nerves_toolchain_x86_64_unknown_linux_gnu , "~> 0.12.1", runtime: false}
     ]
   end
 
