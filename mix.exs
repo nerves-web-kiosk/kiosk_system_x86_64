@@ -34,7 +34,7 @@ defmodule KioskSystemx8664.Mixfile do
 
   defp nerves_package do
     [
-      type:  :system,
+      type: :system,
       version: @version,
       compiler: :nerves_package,
       artifact_url: [
