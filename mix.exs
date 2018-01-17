@@ -34,10 +34,11 @@ defmodule KioskSystemx8664.Mixfile do
 
   defp nerves_package do
     [
-      type:  :system,
-      artifact_url: [
-        "https://github.com/letoteteam/#{@app}/releases/download/v#{@version}/#{@app}-v#{@version}.tar.gz"
+      type: :system,
+      artifact_sites: [
+        {:github_releases, "letoteteam/#{@app}"}
       ],
+      provider: Nerves.Artifact.Providers.Docker,
       platform: Nerves.System.BR,
       platform_config: [
         defconfig: "nerves_defconfig"
@@ -48,9 +49,8 @@ defmodule KioskSystemx8664.Mixfile do
 
   defp deps do
     [
-      {:nerves, "~> 0.8", runtime: false},
-      #{:nerves_system_br, "~> 0.15.0", runtime: false, app: false},
-      {:nerves_system_br, github: "nerves-project/nerves_system_br", branch: "br_2017.11"},
+      {:nerves, github: "nerves-project/nerves", branch: "rel-v0.9.0", runtime: false, override: true},
+      {:nerves_system_br, "~> 0.16.1-2017-11", runtime: false, app: false},
       {:nerves_toolchain_x86_64_unknown_linux_gnu , "~> 0.12.1", runtime: false}
     ]
   end
@@ -83,7 +83,10 @@ defmodule KioskSystemx8664.Mixfile do
       "linux-4.9.defconfig",
       "config.txt",
       "post-createfs.sh",
-      "post-build.sh"
+      "post-build.sh",
+      "Config.in",
+      "external.mk",
+      "package"
     ]
   end
 end
