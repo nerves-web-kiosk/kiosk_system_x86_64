@@ -12,6 +12,15 @@ defmodule KioskSystemx8664.Mixfile do
   @version Path.join(__DIR__, "VERSION")
     |> File.read!
     |> String.trim
+  
+  provider = 
+    if System.get_env("CI") != nil do
+      Nerves.Artifact.Providers.Local
+    else
+      Nerves.Artifact.Providers.Docker
+    end
+
+  @provider provider
 
   def project do
     [
@@ -42,7 +51,7 @@ defmodule KioskSystemx8664.Mixfile do
       artifact_sites: [
         {:github_releases, "letoteteam/#{@app}"}
       ],
-      provider: Nerves.Artifact.Providers.Docker,
+      provider: @provider,
       platform: Nerves.System.BR,
       platform_config: [
         defconfig: "nerves_defconfig"

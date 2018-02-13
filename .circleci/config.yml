@@ -5,6 +5,7 @@ defaults: &defaults
   environment:
     ENV: CI
     MIX_ENV: test
+    MIX_TARGET: x86_64
     ELIXIR_VERSION: 1.5.2
 
 install_elixir: &install_elixir
