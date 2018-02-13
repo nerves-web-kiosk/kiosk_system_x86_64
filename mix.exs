@@ -23,9 +23,13 @@ defmodule KioskSystemx8664.Mixfile do
       description: description(),
       package: package(),
       deps: deps(),
-      aliases: ["deps.precompile": ["nerves.env", "nerves.precompile", "deps.precompile"],
-      "deps.loadpaths":  ["deps.loadpaths", "nerves.loadpaths"]]
+      aliases: ["loadconfig": [&bootstrap/1]]
     ]
+  end
+
+  def bootstrap(args) do
+    Application.start(:nerves_bootstrap)
+    Mix.Task.run("loadconfig", args)
   end
 
   def application do
@@ -49,9 +53,9 @@ defmodule KioskSystemx8664.Mixfile do
 
   defp deps do
     [
-      {:nerves, github: "nerves-project/nerves", branch: "rel-v0.9.0", runtime: false, override: true},
-      {:nerves_system_br, "~> 0.16.1-2017-11", runtime: false, app: false},
-      {:nerves_toolchain_x86_64_unknown_linux_gnu , "~> 0.12.1", runtime: false}
+      {:nerves, "~> 0.10", runtime: false},
+      {:nerves_system_br, "~> 0.17.0", runtime: false, app: false},
+      {:nerves_toolchain_x86_64_unknown_linux_gnu , "~> 0.13.1", runtime: false}
     ]
   end
 
