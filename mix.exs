@@ -64,7 +64,8 @@ defmodule KioskSystemx8664.Mixfile do
     [
       {:nerves, "~> 0.10", runtime: false},
       {:nerves_system_br, "~> 0.17.0", runtime: false, app: false},
-      {:nerves_toolchain_x86_64_unknown_linux_gnu , "~> 0.13.1", runtime: false}
+      {:nerves_toolchain_x86_64_unknown_linux_gnu , "~> 0.13.1", runtime: false},
+      {:nerves_system_linter, "~> 0.3.0", runtime: false}
     ]
   end
 
