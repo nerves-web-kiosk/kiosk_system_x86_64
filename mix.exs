@@ -95,14 +95,17 @@ defmodule KioskSystemx8664.Mixfile do
       "VERSION",
       "rootfs_overlay",
       "fwup.conf",
+      "fwup-revert.conf",
       "grub.cfg",
-      "linux-4.9.defconfig",
-      "config.txt",
+      "linux-4.13.defconfig",
       "post-createfs.sh",
       "post-build.sh",
       "Config.in",
       "external.mk",
-      "package"
+      "package",
+      "users_table.txt",
+      "priv",
+      "patches"
     ]
   end
 end
