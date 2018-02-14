@@ -36,13 +36,15 @@ defmodule KioskSystemx8664.Mixfile do
     ]
   end
 
+  # Starting nerves_bootstrap adds the required aliases to Mix.Project.config()
+  # Aliases are only added if MIX_TARGET is set.
   def bootstrap(args) do
     Application.start(:nerves_bootstrap)
     Mix.Task.run("loadconfig", args)
   end
 
   def application do
-    []
+    [] 
   end
 
   defp nerves_package do
