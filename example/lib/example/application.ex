@@ -7,11 +7,14 @@ defmodule Example.Application do
     import Supervisor.Spec, warn: false
     iface = Application.get_env(:nerves_network, :iface)
     init0()
+    # Comment if you need to wait for an IP before launching
+    init1(%{})
     # Define workers and child supervisors to be supervised
     children = [
-      worker(SystemRegistry.Task, [
-        [:state, :network_interface,  iface, :ipv4_address],
-        &init1/1])
+      # Uncomment if you need to wait for IP
+      # worker(SystemRegistry.Task, [
+      #   [:state, :network_interface,  iface, :ipv4_address],
+      #   &init1/1])
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
@@ -61,7 +64,15 @@ defmodule Example.Application do
   def init_ui() do
     System.put_env("QTWEBENGINE_REMOTE_DEBUGGING", "9222")
     System.put_env("QTWEBENGINE_CHROMIUM_FLAGS", "--disable-embedded-switches")
-    System.cmd("qt-webengine-kiosk", ["-c", "/etc/qt-webengine-kiosk.ini", "--opengl", "NATIVE"])
+    start_remote_debugger()
+    # Need to spawn to make sure we don't block
+    # Otherwise, SystemRegistry will continue to send messages
+    # and run out of memory.
+    if pid =  Process.whereis(QtWebEngineKiosk) do
+      Process.exit(pid, :normal)
+    end
+    spawn(fn -> MuonTrap.cmd("qt-webengine-kiosk", ["-c", "/etc/qt-webengine-kiosk.ini", "--opengl", "NATIVE"]) end)
+    |> Process.register(QtWebEngineKiosk)
   end
 
   def init_ntp(ntp_server) do
@@ -75,6 +86,10 @@ defmodule Example.Application do
   end
 
   def start_remote_debugger() do
-    System.cmd("socat", ["tcp-listen:9223,fork", "tcp:localhost:9222"])
+    if pid =  Process.whereis(QtWebEngineRemoteDebugger) do
+      Process.exit(pid, :normal)
+    end
+    spawn(fn -> MuonTrap.cmd("socat",["tcp-listen:9223,fork", "tcp:localhost:9222"]) end)
+    |> Process.register(QtWebEngineRemoteDebugger)
   end
 end

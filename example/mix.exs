@@ -1,6 +1,7 @@
 defmodule Example.MixProject do
   use Mix.Project
 
+  System.put_env("MIX_TARGET", "x86_64")
   @target System.get_env("MIX_TARGET") || "host"
 
   def project do
@@ -9,7 +10,7 @@ defmodule Example.MixProject do
       version: "0.1.0",
       elixir: "~> 1.4",
       target: @target,
-      archives: [nerves_bootstrap: "~> 0.8"],
+      archives: [nerves_bootstrap: "~> 1.0-rc"],
       deps_path: "deps/#{@target}",
       build_path: "_build/#{@target}",
       lockfile: "mix.lock.#{@target}",
@@ -45,8 +46,8 @@ defmodule Example.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:nerves, "~> 0.10", runtime: false},
-      {:logger_circular_buffer, "~> 0.2"}
+      {:nerves, "~> 1.0-rc", runtime: false},
+      {:ring_logger, "~> 0.4"}
     ] ++ deps(@target)
   end
 
@@ -59,6 +60,7 @@ defmodule Example.MixProject do
       {:nerves_runtime, "~> 0.4"},
       {:nerves_network, "~> 0.3"},
       {:nerves_init_gadget, "~> 0.1"},
+      {:muontrap, "~> 0.2"}
     ] ++ system(target)
   end
 
