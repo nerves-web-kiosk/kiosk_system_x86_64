@@ -1,0 +1,53 @@
+From 89fc4c23cd0506cd26d79e8b18f51a88eb150776 Mon Sep 17 00:00:00 2001
+From: Justin Schneck <jschneck@mac.com>
+Date: Sun, 1 Apr 2018 15:48:02 -0400
+Subject: [PATCH] horizontal and vertical center linux logo
+
+---
+ drivers/video/console/fbcon.c    | 1 +
+ drivers/video/fbdev/core/fbmem.c | 8 +++++---
+ 2 files changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/video/console/fbcon.c b/drivers/video/console/fbcon.c
+index 12ded23..4a16d1e 100644
+--- a/drivers/video/console/fbcon.c
++++ b/drivers/video/console/fbcon.c
+@@ -575,6 +575,7 @@ static void fbcon_prepare_logo(struct vc_data *vc, struct fb_info *info,
+ 	if (fb_get_color_depth(&info->var, &info->fix) == 1)
+ 		erase &= ~0x400;
+ 	logo_height = fb_prepare_logo(info, ops->rotate);
++        logo_height = info->var.yres;
+ 	logo_lines = DIV_ROUND_UP(logo_height, vc->vc_font.height);
+ 	q = (unsigned short *) (vc->vc_origin +
+ 				vc->vc_size_row * rows);
+diff --git a/drivers/video/fbdev/core/fbmem.c b/drivers/video/fbdev/core/fbmem.c
+index 7a42238..eb0441c 100644
+--- a/drivers/video/fbdev/core/fbmem.c
++++ b/drivers/video/fbdev/core/fbmem.c
+@@ -498,10 +498,12 @@ static int fb_show_logo_line(struct fb_info *info, int rotate,
+ 		fb_set_logo(info, logo, logo_new, fb_logo.depth);
+ 	}
+ 
+-	image.dx = 0;
+-	image.dy = y;
++	// image.dx = 0;
++	// image.dy = y;
+ 	image.width = logo->width;
+ 	image.height = logo->height;
++        image.dx = (info->var.xres - image.width) / 2;
++        image.dy = (info->var.yres - image.height) / 2;
+ 
+ 	if (rotate) {
+ 		logo_rotate = kmalloc(logo->width *
+@@ -510,7 +512,7 @@ static int fb_show_logo_line(struct fb_info *info, int rotate,
+ 			fb_rotate_logo(info, logo_rotate, &image, rotate);
+ 	}
+ 
+-	fb_do_show_logo(info, &image, rotate, n);
++	fb_do_show_logo(info, &image, rotate, 1);
+ 
+ 	kfree(palette);
+ 	if (saved_pseudo_palette != NULL)
+-- 
+2.7.4
+
