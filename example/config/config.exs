@@ -20,9 +20,6 @@ config :shoehorn,
   init: [:nerves_runtime, :nerves_init_gadget],
   app: Mix.Project.config()[:app]
 
-config :nerves, :firmware,
-  rootfs_overlay: "rootfs_overlay"
-
 # Add the LoggerCircularBuffer backend. This removes the
 # default :console backend.
 config :logger, backends: [RingLogger]
