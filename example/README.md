@@ -1,6 +1,6 @@
 # Example
 
-`kiosk_system_rpi3` example app
+`kiosk_system_x86_64` example app
 
 ## Getting Started
 
@@ -8,7 +8,7 @@ To start your Nerves app:
 
 Set the target
 ```bash
-export MIX_TARGET=rpi3
+export MIX_TARGET=x86_64
 ```
 
 Set the url to display

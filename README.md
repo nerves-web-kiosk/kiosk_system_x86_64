@@ -20,9 +20,9 @@ This is the base Nerves System configuration for a kiosk x86_64 system.
 ## Using
 
 The most common way of using this Nerves System is create a project with `mix
-nerves.new` and to export `MIX_TARGET=x86_64`. 
+nerves.new` and to export `MIX_TARGET=x86_64`.
 
-Then, change the rpi3 system dependency to
+Then, change the x86_64 system dependency to
 `{:kiosk_system_x86_64, "~> 1.0"}`
 
 See the [Getting started
@@ -33,7 +33,7 @@ If you need custom modifications to this system for your device, clone this
 repository and update as described in [Making custom
 systems](https://hexdocs.pm/nerves/systems.html#customizing-your-own-nerves-system)
 
-See the [example project](https://github.com/LeToteTeam/kiosk_system_rpi3/tree/master/example) for more info
+See the [example project](https://github.com/LeToteTeam/kiosk_system_x86_64/tree/master/example) for more info
 
 ## Root disk naming
 
