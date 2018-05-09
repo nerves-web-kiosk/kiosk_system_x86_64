@@ -42,7 +42,7 @@ defmodule Mix.Tasks.Nerves.Gen.QemuScript do
     end
 
     source =
-      :code.priv_dir(:nerves_system_x86_64)
+      :code.priv_dir(:kiosk_system_x86_64)
       |> to_string
       |> Path.join(@script_name)
 
