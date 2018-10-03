@@ -50,7 +50,8 @@ defmodule Example.MixProject do
       {:nerves_runtime, "~> 0.4"},
       {:nerves_network, "~> 0.3"},
       {:nerves_init_gadget, "~> 0.1"},
-      {:muontrap, "~> 0.2"}
+      {:nerves_time, "~> 0.2"},
+      {:webengine_kiosk, "~> 0.1"}
     ] ++ system(target)
   end
 
