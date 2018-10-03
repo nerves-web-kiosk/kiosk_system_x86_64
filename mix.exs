@@ -25,7 +25,7 @@ defmodule KioskSystemx8664.Mixfile do
       description: description(),
       package: package(),
       deps: deps(),
-      aliases: ["loadconfig": [&bootstrap/1]],
+      aliases: [loadconfig: [&bootstrap/1]],
       docs: [extras: ["README.md"], main: "readme"]
     ]
   end
@@ -74,7 +74,7 @@ defmodule KioskSystemx8664.Mixfile do
 
   defp package do
     [
-      maintainers: ["Justin Schneck", "Greg Mefford", "Jeff Smith"],
+      maintainers: ["Justin Schneck"],
       files: package_files(),
       licenses: ["Apache 2.0"],
       links: %{"Github" => "https://github.com/letoteteam/#{@app}"}
@@ -83,18 +83,19 @@ defmodule KioskSystemx8664.Mixfile do
 
   defp package_files do
     [
-      "package",
+      "fwup_include",
+      "lib",
       "patches",
       "priv",
       "rootfs_overlay",
       "CHANGELOG.md",
       "Config.in",
-      "external.mk",
       "fwup-revert.conf",
       "fwup.conf",
       "grub.cfg",
       "LICENSE",
-      "linux-4.13.defconfig",
+      "linux-4.14.defconfig",
+      "logo_custom_clut224.ppm",
       "mix.exs",
       "nerves_defconfig",
       "post-build.sh",
