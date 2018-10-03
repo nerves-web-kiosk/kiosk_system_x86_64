@@ -10,7 +10,7 @@ This is the base Nerves System configuration for a kiosk x86_64 system.
 | CPU                  | Intel                           |
 | Memory               | 512 MB+ DRAM                    |
 | Storage              | Hard disk/SSD/etc. (/dev/sda)   |
-| Linux kernel         | 4.13                            |
+| Linux kernel         | 4.14.70                         |
 | IEx terminal         | ttyS0 (for use with QEMU)       |
 | Hardware I/O         | None                            |
 | Ethernet             | Yes                             |
