@@ -94,7 +94,7 @@ defmodule KioskSystemx8664.Mixfile do
       "fwup.conf",
       "grub.cfg",
       "LICENSE",
-      "linux-4.14.defconfig",
+      "linux-4.18.defconfig",
       "logo_custom_clut224.ppm",
       "mix.exs",
       "nerves_defconfig",
