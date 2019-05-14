@@ -1,5 +1,18 @@
 # Changelog
 
+## v1.3.0
+
+* Improvements
+  * Bump C compiler options to `-O2` from `-Os`. This provides a small, but
+    measurable performance improvement (500ms at boot in a trivial project
+    tested on [nerves_system_rpi0](https://github.com/nerves-project/nerves_system_rpi0)).
+* Bux fixes
+  * Add TAR option `--no-same-owner` to fix errors when untarring artifacts as
+    the root user.
+* Updated dependencies
+  * [nerves_system_br v1.7.2](https://github.com/nerves-project/nerves_system_br/releases/tag/v1.7.2)
+  * Linux 4.19.43
+
 ## v1.2.0
 
 This pulls in a pending patch in Buildroot to update the version of
