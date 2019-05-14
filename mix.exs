@@ -5,8 +5,8 @@ defmodule KioskSystemx8664.Mixfile do
   @version Path.join(__DIR__, "VERSION")
     |> File.read!
     |> String.trim
-  
-  build_runner = 
+
+  build_runner =
     if System.get_env("CI") != nil do
       Nerves.Artifact.BuildRunners.Local
     else
@@ -19,7 +19,7 @@ defmodule KioskSystemx8664.Mixfile do
     [
       app: @app,
       version: @version,
-      elixir: "~> 1.4",
+      elixir: "~> 1.8",
       compilers: Mix.compilers ++ [:nerves_package],
       nerves_package: nerves_package(),
       description: description(),
@@ -31,11 +31,11 @@ defmodule KioskSystemx8664.Mixfile do
   end
 
   def application do
-    [] 
+    []
   end
 
   defp bootstrap(args) do
-    System.put_env("MIX_TARGET", "x86_64")
+    set_target()
     Application.start(:nerves_bootstrap)
     Mix.Task.run("loadconfig", args)
   end
@@ -111,6 +111,14 @@ defmodule KioskSystemx8664.Mixfile do
       [make_args: ["BR2_PRIMARY_SITE=#{primary_site}", "PARALLEL_JOBS=8"]]
     else
       [make_args: ["PARALLEL_JOBS=8"]]
+    end
+  end
+
+  defp set_target() do
+    if function_exported?(Mix, :target, 1) do
+      apply(Mix, :target, [:target])
+    else
+      System.put_env("MIX_TARGET", "target")
     end
   end
 end

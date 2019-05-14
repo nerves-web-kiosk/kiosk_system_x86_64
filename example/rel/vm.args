@@ -4,12 +4,16 @@
 ##  The cookie needs to be configured prior to vm boot for
 ##  for read only filesystem.
 
-# -name test@0.0.0.0
--setcookie example
+# -name example@0.0.0.0
+-setcookie /Jnde0Hr143FzUp/uzr/9i8eKQ2lbtQwRqotbkWFZf8yzABEdbRtqwGB+0TOZfwB
 
 ## Use Ctrl-C to interrupt the current shell rather than invoking the emulator's
 ## break handler and possibly exiting the VM.
 +Bc
+
+# Allow time warps so that the Erlang system time can more closely match the
+# OS system time.
++C multi_time_warp
 
 ## Load code at system startup
 ## See http://erlang.org/doc/system_principles/system_principles.html#code-loading-strategy
@@ -30,11 +34,8 @@
 ## Enable colors in the shell
 -elixir ansi_enabled true
 
-## Options added after -extra are interpreted as plain arguments and can be
-## retrieved using :init.get_plain_arguments(). Options before the "--" are
-## interpreted by Elixir and anything afterwards is left around for other IEx
-## and user applications.
+## Options added after -extra are interpreted as plain arguments and
+## can be retrieved using :init.get_plain_arguments().
 -extra --no-halt
-#--
-#--dot-iex /etc/iex.exs
-
+--
+--dot-iex /etc/iex.exs

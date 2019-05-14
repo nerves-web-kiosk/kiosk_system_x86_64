@@ -18,5 +18,5 @@ export KIOSK_URL=https://google.com
 
 Build and Burn firmware
 ```bash
-mix do deps.get, firmware, firmware.burn
+mix do deps.get, firmware.burn
 ```
