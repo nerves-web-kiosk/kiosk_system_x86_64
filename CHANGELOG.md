@@ -1,5 +1,12 @@
 # Changelog
 
+## v1.4.0
+
+* Updated dependencies
+  * [nerves_system_br v1.7.3](https://github.com/nerves-project/nerves_system_br/releases/tag/v1.7.3)
+  * [nerves_toolchain v1.2.0](https://github.com/nerves-project/toolchains/releases/tag/v1.2.0)
+  * Erlang 22.0.2
+
 ## v1.3.0
 
 * Improvements
