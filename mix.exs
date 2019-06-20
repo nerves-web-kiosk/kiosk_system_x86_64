@@ -74,10 +74,9 @@ defmodule KioskSystemx8664.Mixfile do
 
   defp package do
     [
-      maintainers: ["Justin Schneck"],
       files: package_files(),
       licenses: ["Apache 2.0"],
-      links: %{"Github" => "https://github.com/letoteteam/#{@app}"}
+      links: %{"GitHub" => "https://github.com/letoteteam/#{@app}"}
     ]
   end
 
