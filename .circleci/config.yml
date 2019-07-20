@@ -5,6 +5,7 @@ exec: &exec
 
 version: 2.1
 
+
 orbs:
   build-tools: nerves-project/build-tools@dev:jschneck
 
@@ -15,7 +16,7 @@ workflows:
       - build-tools/build-system:
           exec:
             <<: *exec
-          resource_class: xlarge
+          resource-class: xlarge
           context: org-global
           filters:
             tags:
