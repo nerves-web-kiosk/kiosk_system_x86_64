@@ -58,7 +58,7 @@ defmodule KioskSystemx8664.Mixfile do
 
   defp deps do
     [
-      {:nerves, "~> 1.5", runtime: false},
+      {:nerves, "~> 1.5.0", runtime: false},
       {:nerves_system_br, "1.8.4", runtime: false},
       {:nerves_toolchain_x86_64_unknown_linux_gnu , "1.2.0", runtime: false},
       {:nerves_system_linter, "~> 0.3.0", runtime: false},
