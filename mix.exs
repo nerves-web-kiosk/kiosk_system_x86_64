@@ -6,15 +6,6 @@ defmodule KioskSystemx8664.Mixfile do
     |> File.read!
     |> String.trim
 
-  build_runner =
-    if System.get_env("CI") != nil do
-      Nerves.Artifact.BuildRunners.Local
-    else
-      Nerves.Artifact.BuildRunners.Docker
-    end
-
-  @build_runner build_runner
-
   def project do
     [
       app: @app,
@@ -46,7 +37,6 @@ defmodule KioskSystemx8664.Mixfile do
       artifact_sites: [
         {:github_releases, "letoteteam/#{@app}"}
       ],
-      build_runner: @build_runner,
       build_runner_opts: build_runner_opts(),
       platform: Nerves.System.BR,
       platform_config: [
@@ -59,7 +49,7 @@ defmodule KioskSystemx8664.Mixfile do
   defp deps do
     [
       {:nerves, "~> 1.5.0", runtime: false},
-      {:nerves_system_br, "1.8.5", runtime: false},
+      {:nerves_system_br, "1.9.2", runtime: false},
       {:nerves_toolchain_x86_64_unknown_linux_gnu , "1.2.0", runtime: false},
       {:nerves_system_linter, "~> 0.3.0", runtime: false},
       {:ex_doc, "~> 0.18", only: :dev}
